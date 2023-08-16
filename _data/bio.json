@@ -1,99 +1,109 @@
 {
-  "basics": {
-    "name": "Kirin Eicher",
-    "label": "Student Athlete at Haverford College",
-    "picture": "",
-    "email": "eicherk20@gmail.com",
-    "phone": "301-412-6474",
-    "website": "https://kirin-eicher.github.io",
-    "summary": "I am a senior in the Haverford College Economics department. Expecting to graduate with a B.A. in Economics and minor in statistics Spring 2024. Aspiring data analyst/scientist with an eye towards public policy analysis.",
-    "location": { "address": "", "postalCode": "22932", "city": "Crozet", "countryCode": "USA", "region": "Virginia" },
-    "profiles": [
-      { "network": "github", "username": "kirin-eicher", "url": "https://kirin-eicher.github.io" },
-      { "network": "linkedin", "username": "mollymaluhia", "url": "https://www.linkedin.com/in/kirineicher/" }
-    ]
-  },
-  "interests": [
-    { "name": "Data Analytics" },
-    { "name": "Business Analytics" },
-    { "name": "Policy Research" },
-    { "name": "Data creation" }
-  ],
-  "skills": [
-    {
-      "name": "Software and Coding Languages",
-      "keywords": [ "Python", "R", "Stata", "Excel", "SQL", "Tableau", "Git"]
-    },
-    {
-      "name": "Skills",
-      "keywords": [ "Data analysis", "Statistical modeling", "Causal inference", "Data creation", "Written and oral communication"]
-    }
-  ],
-  "education": [
-    {
-      "institution": "Haverford College, Haverford, PA",
-      "area": "Economics (expected Spring 2024)",
-      "studyType": "B.A.",
-      "startDate": "2020-08-30",
-      "endDate": "Present",
-      "courses": ["Applied Multivariate Statistical Analysis", "Advanced Econometrics", "Probability", "Linear Algebra"
-      ]
-    }
-  ],
-  "work": [
-    {
-      "company": "",
-      "position": ""
-      "website": "",
-      "startDate": "",
-      "endDate": "",
-      "summary": "",
-      "highlights": [
-        "", ""
-      ]
-    },
-    {
-      "company": "",
-      "position": ""
-      "website": "",
-      "startDate": "",
-      "endDate": "",
-      "summary": "",
-      "highlights": [
-        "", ""
-      ]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "",
-      "website": "",
-      "position": "",
-      "startDate": "",
-      "endDate": "",
-      "summary": "",
-      "highlights": [
-        "", "" 
-      ]
-    }
-  ],
-  "awards": [
-    {
-      "title": "",
-      "date": "",
-      "awarder": "",
-      "summary": ""
-    },
-    {
-      "title": "",
-      "date": "",
-      "awarder": "",
-      "summary": ""
-    }
-  ],
-  "references": [
-    {
-      "name": "Available upon request"
-    }
-  ]
+	"basics": {
+		"name": "Kirin Eicher",
+		"label": "Student Athlete at Haverford College",
+		"picture": "",
+		"email": "eicherk20@gmail.com",
+		"phone": "301-412-6474",
+		"website": "https://kirin-eicher.github.io",
+		"summary": "I am a senior in the Haverford College Economics department. Expecting to graduate with a B.A. in Economics and minor in statistics Spring 2024. Aspiring data analyst/scientist with an eye towards public policy analysis.",
+		"location": {
+			"address": "",
+			"postalCode": "22932",
+			"city": "Crozet",
+			"countryCode": "USA",
+			"region": "Virginia"
+		},
+		"profiles": [{
+				"network": "github",
+				"username": "kirin-eicher",
+				"url": "https://kirin-eicher.github.io"
+			},
+			{
+				"network": "linkedin",
+				"username": "mollymaluhia",
+				"url": "https://www.linkedin.com/in/kirineicher/"
+			}
+		]
+	},
+	"interests": [{
+			"name": "Data Analytics"
+		},
+		{
+			"name": "Business Analytics"
+		},
+		{
+			"name": "Policy Research"
+		},
+		{
+			"name": "Data creation"
+		}
+	],
+	"skills": [{
+			"name": "Software and Coding Languages",
+			"keywords": ["Python", "R", "Stata", "Excel", "SQL", "Tableau", "Git"]
+		},
+		{
+			"name": "Skills",
+			"keywords": ["Data analysis", "Statistical modeling", "Causal inference", "Data creation", "Written and oral communication"]
+		}
+	],
+	"education": [{
+		"institution": "Haverford College, Haverford, PA",
+		"area": "Economics (expected Spring 2024)",
+		"studyType": "B.A.",
+		"startDate": "2020-08-30",
+		"endDate": "Present",
+		"courses": ["Applied Multivariate Statistical Analysis", "Advanced Econometrics", "Probability", "Linear Algebra"]
+	}],
+	"work": [{
+			"company": "",
+			"position": "",
+			"website": "",
+			"startDate": "",
+			"endDate": "",
+			"summary": "",
+			"highlights": [
+				"", ""
+			]
+		},
+		{
+			"company": "",
+			"position": "",
+			"website": "",
+			"startDate": "",
+			"endDate": "",
+			"summary": "",
+			"highlights": [
+				"", ""
+			]
+		}
+	],
+	"volunteer": [{
+		"organization": "",
+		"website": "",
+		"position": "",
+		"startDate": "",
+		"endDate": "",
+		"summary": "",
+		"highlights": [
+			"", ""
+		]
+	}],
+	"awards": [{
+			"title": "",
+			"date": "",
+			"awarder": "",
+			"summary": ""
+		},
+		{
+			"title": "",
+			"date": "",
+			"awarder": "",
+			"summary": ""
+		}
+	],
+	"references": [{
+		"name": "Available upon request"
+	}]
 }
