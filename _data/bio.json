@@ -21,7 +21,7 @@
 			},
 			{
 				"network": "linkedin",
-				"username": "mollymaluhia",
+				"username": "kirineicher",
 				"url": "https://www.linkedin.com/in/kirineicher/"
 			}
 		]
@@ -36,7 +36,7 @@
 			"name": "Policy Research"
 		},
 		{
-			"name": "Data creation"
+			"name": "Data management"
 		}
 	],
 	"skills": [{
@@ -57,52 +57,38 @@
 		"courses": ["Applied Multivariate Statistical Analysis", "Advanced Econometrics", "Probability", "Linear Algebra"]
 	}],
 	"work": [{
-			"company": "",
-			"position": "",
-			"website": "",
-			"startDate": "",
-			"endDate": "",
-			"summary": "",
+			"company": "Haverford College",
+			"position": "Economics Research Assistant",
+			"startDate": "2023-05-24",
+			"endDate": "2023-07-29",
+			"summary": "Worked under the direction of Prof. Richard Ball and the Data Editor’s office of the American Economics Association as a member of Cornell University’s Labor Dynamics Institute.",
 			"highlights": [
-				"", ""
+				"Analyzed Python, R, Stata, and Matlab code to ensure reproducibility of results in papers to AEA journals.", "Debugged code to prouce adequate output.", "Provided recommendations for authors to improve code and doucmentation"
 			]
 		},
 		{
-			"company": "",
-			"position": "",
-			"website": "",
-			"startDate": "",
-			"endDate": "",
-			"summary": "",
+			"company": "ConnectDER",
+			"position": "Product Management Intern",
+			"website": "https://connectder.com/",
+			"startDate": "2022-05-23",
+			"endDate": "2022-07-29",
+			"summary": "Led market research efforts to examine the viability of new solar technology products in the residential renewable energy market",
 			"highlights": [
-				"", ""
+				"Spearheaded novel research into state-level solar market regulations and industry trends.", "Conducted comprehensive industry interviews to construct a database of product pricing information.", "Drove product development and market strategy through recommendations to compnay leadership"
 			]
 		}
 	],
 	"volunteer": [{
-		"organization": "",
-		"website": "",
-		"position": "",
-		"startDate": "",
-		"endDate": "",
-		"summary": "",
+		"organization": "Haverford Varsity Men's Tennis",
+		"position": "Captain",
+		"startDate": "10-15-2022",
+		"endDate": "Present",
+		"summary": "I assist our coaches by helping to facilitate the effective operation of our team",
 		"highlights": [
-			"", ""
+			"Meet regularly with players and coaches to establish agreement on academic and athletic goals and direction.", "Consult with coaches on team events and standards for behavior and success.", "Coordinate and lead extracurricular events such as volunteering, attendance at student-athlete panels, and leadership training."
 		]
-	}],
-	"awards": [{
-			"title": "",
-			"date": "",
-			"awarder": "",
-			"summary": ""
-		},
-		{
-			"title": "",
-			"date": "",
-			"awarder": "",
-			"summary": ""
-		}
-	],
+	}
+],
 	"references": [{
 		"name": "Available upon request"
 	}]
