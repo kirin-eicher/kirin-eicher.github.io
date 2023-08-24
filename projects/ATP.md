@@ -99,7 +99,7 @@ tourney_final.head()
 
 First, let's look at some summary statistics on the players in the data set:
 
-<img class="img-fluid" src="../img/ATP/player_stats.png" width="80%" height="70%">
+<img class="img-fluid" src="../img/ATP/player_stats.png" width="50%" height="50%">
 
 The table above provides some interesting insights into the sample of 550 players in the dataset:
  - The median year turned pro is 2004. Since the range of years is 1969 to 2017, this is an indication that the dataset over-represents modern players.
@@ -129,8 +129,8 @@ Now, a look at some basic tournament characteristics:
 
 <img class="img-fluid" src="../img/ATP/tourney_surface.png" width="50%" height="50%">
 <img class="img-fluid" src="../img/ATP/tourney_conditions.png" width="50%" height="50%">
-<img class="img-fluid" src="../img/ATP/surface_timeline.png" height="80%">
-<img class="img-fluid" src="../img/ATP/surface_conditions_pie.png" width="80%">
+<img class="img-fluid" src="../img/ATP/surface_timeline.png" height="60%" width="60%">
+<img class="img-fluid" src="../img/ATP/surface_conditions_pie.png" width="80%" height="60%">
 
 Some notes from these figures:
  - The first pie chart provides strong insight into the prevalence of each tennis court surface for the past 50 years. Hard courts are used at nearly half of all tournaments, while clay courts make up roughly a third. Grass and carpet tournaments are comparatively rare.
@@ -266,11 +266,11 @@ def ann_backhand_breakdown(table: pd.DataFrame) -> pd.DataFrame:
     return store
 ```
 
-<img class="img-fluid" src="../img/ATP/backhand_wins_over_time.png" width="80%" height="80">
+<img class="img-fluid" src="../img/ATP/backhand_wins_over_time.png" width="80%" height="60%">
 
 This graph shows the share of titles won every year by one- and two-handed players. What's immediately clear is that, despite the one-handed backhand declining in popularity, one-handers manage to win more than their fair share of titles on tour even at points in the 2010s. Although two-handers have dominated at times, one-handers have never been completely shut out of the winners' circle. At the very least, an effective one-hander is certainly not a disadvantage.
 
-<img class="img-fluid" src="../img/ATP/backhand_newpros_series.png" width="80%" height="80">
+<img class="img-fluid" src="../img/ATP/backhand_newpros_series.png" width="80%" height="60%">
 
 The changing share of one-handed backhands in recent years may shed some light on the success of one-handed players. The second graph shows the backhand style breakdown of players who have turned pro in every year from 1986 to 2013. Early on one-handers seemed to be slightly more popular, until the 2000s when two-handed backhands began to dominate the tour. Therefore, part of the overrepresentation of one-handers in the winners dataset may be due to the fact that many of the younger two-handers have not yet finished their career and thus have not had the chance to accumulate as many titles. Nevertheless, the success of one-handers is a notable trend in the data across all years.
 
