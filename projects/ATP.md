@@ -4,7 +4,7 @@ type: project
 image: img/project_images/surface_timeline.png
 title: "ATP Tennis Tournament Winner Analysis"
 date: 2023
-published: false
+published: true
 labels:
   - Python
   - Pandas
