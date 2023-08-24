@@ -222,7 +222,7 @@ The title count data seems to suggest that left-handed players win a slightly di
 
 We also have to acknowledge that there is a notable left-handed outlier: Rafael Nadal. Nadal, who holds 75 of the titles in this dataset, may single-handedly be inflating the share of lefty victories. To check this, I reran the analysis, excluding Nadal from the dataset.
 
-<img class="img-fluid" src="../img/ATP/titles_handedness.png" width="50%" height="50%">
+<img class="img-fluid" src="../img/ATP/titles_handedness_no_rafa.png" width="50%" height="50%">
 
 After excluding Nadal, the proportion of titles won by left-handed players falls to a level very similar to the propotion of left-handed
 players in the dataset (14.88 of players vs 13.73 of titles). Most would agree that Rafa Nadal's immense success as a professional player
