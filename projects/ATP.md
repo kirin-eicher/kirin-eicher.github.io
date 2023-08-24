@@ -1,22 +1,19 @@
 ---
 layout: project
 type: project
-image: img/micromouse/micromouse-square.jpg
+image: img/project_images/surface_timeline.png
 title: "ATP Tennis Tournament Winner Analysis"
 date: 2023
-published: true
+published: false
 labels:
   - Python
   - Pandas
   - Numpy
   - Matplotlib
+  - Excel
   - Visualization
 summary: "Using data on professional tournament wins to determine which characteristics set players up for success."
 ---
-
-<div class="text-center p-4">
-  <img width="200px" src="../img/micromouse/micromouse-robot.png" class="img-thumbnail" >
-</div>
 
 ## Introduction
 
@@ -66,7 +63,7 @@ set_final = set_final.reset_index(drop = True)
 # preview
 set_final.head()
 ```
-> image here
+<img class="img-fluid" src="../img/project_images/set_final_head.png" width="80%">
 
 With data on both the tournaments played and the players who competed, we can create a cleaned and merged dataset which displays player data for each champion at the annual tournament level:
 
