@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: img/project_images/surface_timeline.png
+image: img/ATP/surface_timeline.png
 title: "ATP Tennis Tournament Winner Analysis"
 date: 2023
 published: true
@@ -14,6 +14,7 @@ labels:
   - Visualization
 summary: "Using data on professional tournament wins to determine which characteristics set players up for success."
 ---
+The full annotated code for this project can be found [here]()
 
 ## Introduction
 
@@ -63,7 +64,7 @@ set_final = set_final.reset_index(drop = True)
 # preview
 set_final.head()
 ```
-<img class="img-fluid" src="../img/project_images/set_final_head.png" width="80%">
+<img class="img-fluid" src="../img/ATP/set_final_head.png" width="80%">
 
 With data on both the tournaments played and the players who competed, we can create a cleaned and merged dataset which displays player data for each champion at the annual tournament level:
 
@@ -92,13 +93,13 @@ tourney_final.head()
 
 ```
 
-> image here
+<img class="img-fluid" src="../img/ATP/tourney_final_head.png" width="80%">
 
 # Summary stats
 
 First, let's look at some summary statistics on the players in the data set:
 
-> image here
+<img class="img-fluid" src="../img/ATP/player_stats.png" width="80%">
 
 The table above provides some interesting insights into the sample of 550 players in the dataset:
  - The median year turned pro is 2004. Since the range of years is 1969 to 2017, this is an indication that the dataset over-represents modern players.
@@ -106,10 +107,10 @@ The table above provides some interesting insights into the sample of 550 player
 
 Next, let's use some visualiztions to understand the players more thoroughly:
 
-> image here
-> image here
-> image here
-> image here
+<img class="img-fluid" src="../img/ATP/player_height.png" width="80%">
+<img class="img-fluid" src="../img/ATP/player_weight.png" width="80%">
+<img class="img-fluid" src="../img/ATP/player_handedness.png" width="80%">
+<img class="img-fluid" src="../img/ATP/player_backhand.png" width="80%">
 
 Height:
  - Player height is predictably skewed to the right, with a median at 73 inches. There is, however, a clear mode in the bin just below 75 in (6ft 3in). Half of all players are between 70 and 75 inches, and there are far more players below this range than above.
@@ -126,10 +127,10 @@ Backhand style:
 
 Now, a look at some basic tournament characteristics:
 
-> image here
-> image here
-> image here
-> image here
+<img class="img-fluid" src="../img/ATP/tourney_surface.png" width="80%">
+<img class="img-fluid" src="../img/ATP/tourney_conditions.png" width="80%">
+<img class="img-fluid" src="../img/ATP/surface_timeline.png" width="80%">
+<img class="img-fluid" src="../img/ATP/surface_conditions_pie.png" width="80%">
 
 Some notes from these figures:
  - The first pie chart provides strong insight into the prevalence of each tennis court surface for the past 50 years. Hard courts are used at nearly half of all tournaments, while clay courts make up roughly a third. Grass and carpet tournaments are comparatively rare.
@@ -146,7 +147,7 @@ held on carpet.
 
 First, let's examine the attribute which is most commonly associated with advantage in tennis: height. Taller players have longer limbs are are able to more easily cover areas of the court than shorter players. Taller players also have better angles to hit offensive serves and take high balls early. Most people believe taller players have an advantage over smaller players.
 
-> image here
+<img class="img-fluid" src="../img/ATP/wins_height.png" width="80%">
 
 But what do the data say? Looking at the heights of tournament winners in the dataset, this advantage isn't apparent. Comparing the distribution of wins with the distribution of player heights overall, there is not any indication that the tallest players are most likely to win. Rather, the players winning a disproportionately large amount of tournaments are those between 6'1" and 6'3". This goldilocks zone suggests that the optimal height is one that is just above average.
 
@@ -185,7 +186,7 @@ ratio_table.plot(ylabel = "Share of annual tourneys won by players 6ft 2in or ta
                  legend = False)         
 ```
 
-> image here
+<img class="img-fluid" src="../img/ATP/tall_wins_series.png" width="80%">
 
 But this advantage depends on the type of tennis that players are playing. As tennis points have become longer and less focused on serve-and-volley tactics, the importance of the serve has decreased slightly. Such a shift could neutralize the advantage of taller players. To illustrate this, I created a function to calculate the fraction of tournaments every year that were won by players with heights 6'2" or above. The resulting time series indicates that the height advantage has not been constant over time. Being tall was a huge advantage in the 80s, with over 80% of tournaments being won by tall players in those years. As baseline styles evloved in the 90s and 2000s, however, the dominance of tall players dipped, and tall players won only roughly half of annual tournaments.
 
@@ -193,7 +194,7 @@ We see an interesting uptick in tall wins in the 2010s. It's possible that tall 
 
 We can also examine how height helps players on different surfaces and in different conditions:
 
-> image here
+<img class="img-fluid" src="../img/ATP/wins_height_surface.png" width="80%">
 
 This breakdown provides some analytical clarity on a common discussion among tennis fans: do different surfaces favor people of different heights?
 The concensus is that the fast, low bounce of a grass court makes big serves even more potent, giving the edge to tall players.
@@ -205,7 +206,7 @@ The data suggest that this may be the case. The first graph shows the distributi
 There does seem to be a disproportionate share of tournaments won by players around 82.5 inches tall.
 Only two players in this dataset -- John Isner and Ivo Karlovic -- are this tall, and yet they have a combined 21 titles.
 
-> image here
+<img class="img-fluid" src="../img/ATP/isner_karlovic.png" width="80%">
 
 Focusing on their title wins, it is clear that their titles are disporportionately skewed to hard and grass courts.
 Even though grass tournaments have been far less common during their careers than clay tournaments, both players have more grass court
@@ -213,14 +214,15 @@ titles. Although there are too few data points to make a conclusive judgment, th
 
 ## Handedness
 
-> image here
-> image here
+<img class="img-fluid" src="../img/ATP/titles_handedness.png" width="80%">
 
-Handedness also plays a large role in determining how players match up against each other. Most believe that left-handed players, who are far less common than righties, have an advantage since other players will not be used to the unique spins generated by playing with the other hand. Is this true?
+Handedness also plays a large role in determining how players match up against each other. Most believe that left-handed players, who are far less common than righties, have an advantage since other players will not be used to the unique spins generated by the reversed direction of their swings. Is this true?
 
 The title count data seems to suggest that left-handed players win a slightly disproportionately higher share of tournaments than right-handed players, although this margin is quite small. 
 
 We also have to acknowledge that there is a notable left-handed outlier: Rafael Nadal. Nadal, who holds 75 of the titles in this dataset, may single-handedly be inflating the share of lefty victories. To check this, I reran the analysis, excluding Nadal from the dataset.
+
+<img class="img-fluid" src="../img/ATP/titles_handedness.png" width="80%">
 
 After excluding Nadal, the proportion of titles won by left-handed players falls to a level very similar to the propotion of left-handed
 players in the dataset (14.88 of players vs 13.73 of titles). Most would agree that Rafa Nadal's immense success as a professional player
@@ -228,14 +230,17 @@ is not due mainly to the his left-handed shots but instead his excellent fitness
 
 Finally, let's look at the importance of backhand type.
 
->image here
->image here
+## _"One-hand, two-hand, red-hand, blue-hand"_
+
+<img class="img-fluid" src="../img/ATP/titles_backhand.png" width="80%">
 
 The debate between one- and two-handed backhands is intense, and there is no one concensus on which is better. One-handers generally are able to generate more top-spin and therefore more versatility, while two-handed backhands are more consistent and reliable. Two-handed backhands are also generally easier to learn and master. Can the data settle this debate once and for all?
 
-These first two charts above indicate that one-handed backhands have a clear advantage over two-handed ones. Despite only making up 26% of players in the dataset, one-handed backhand users have won more than 38% of the titles. This could be due to the increased range of motion, topspin, and variety that is afforded to people with one-handed backhands. 
+The first chart above indicates that one-handed backhands have a clear advantage over two-handed ones. Despite only making up 26% of players in the dataset, one-handed backhand users have won more than 38% of the titles. This could be due to the increased range of motion, topspin, and variety that is afforded to people with one-handed backhands. 
 
 But wait! Before you go switch to one-hander yourself, note that there is a very significant outlier in the population of one-handers: Roger Federer.
+
+<img class="img-fluid" src="../img/ATP/backhand_no_federer.png" width="80%">
 
 As of 2017, Federer has captured 95 titles on the ATP tour, trailing only Jimmy Connors in the number of titles held. That is roughly 14%
 of all titles won by one-handed players and 5% of all titles in the dataset. Even excluding Federer from the analysis, one-handers seem to win an outsize share of the titles on tour (over 35%). Perhaps having a one-handed backhand is the best physical advantage you can give yourself, at least according to the data.
@@ -261,10 +266,11 @@ def ann_backhand_breakdown(table: pd.DataFrame) -> pd.DataFrame:
     return store
 ```
 
-> image here
-> image here
+<img class="img-fluid" src="../img/ATP/backhand_wins_over_time.png" width="80%">
 
-The first purple graph shows the share of titles won every year by one- and two-handed players. What's immediately clear is that, despite the one-handed backhand declining in popularity, one-handers manage to win more than their fair share of titles on tour even at points in the 2010s. Although two-handers have dominated at times, one-handers have never been completely shut out of the winners' circle. At the very least, an effective one-hander is certainly not a disadvantage.
+This graph shows the share of titles won every year by one- and two-handed players. What's immediately clear is that, despite the one-handed backhand declining in popularity, one-handers manage to win more than their fair share of titles on tour even at points in the 2010s. Although two-handers have dominated at times, one-handers have never been completely shut out of the winners' circle. At the very least, an effective one-hander is certainly not a disadvantage.
+
+<img class="img-fluid" src="../img/ATP/backhand_newpros_series.png" width="80%">
 
 The changing share of one-handed backhands in recent years may shed some light on the success of one-handed players. The second graph shows the backhand style breakdown of players who have turned pro in every year from 1986 to 2013. Early on one-handers seemed to be slightly more popular, until the 2000s when two-handed backhands began to dominate the tour. Therefore, part of the overrepresentation of one-handers in the winners dataset may be due to the fact that many of the younger two-handers have not yet finished their career and thus have not had the chance to accumulate as many titles. Nevertheless, the success of one-handers is a notable trend in the data across all years.
 
