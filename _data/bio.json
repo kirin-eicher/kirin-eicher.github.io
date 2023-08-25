@@ -17,7 +17,7 @@
 		"profiles": [{
 				"network": "github",
 				"username": "kirin-eicher",
-				"url": "https://kirin-eicher.github.io"
+				"url": "https://github.com/kirin-eicher/kirin-eicher.github.io/tree/main"
 			},
 			{
 				"network": "linkedin",
@@ -41,7 +41,7 @@
 	],
 	"skills": [{
 			"name": "Software and Coding Languages",
-			"keywords": ["Python", "R", "Stata", "Excel", "SQL", "Tableau", "Git"]
+			"keywords": ["Python", "R", "SQL", "Excel", "Tableau", "Stata", "Git"]
 		},
 		{
 			"name": "Skills",
