@@ -107,8 +107,7 @@ The table above provides some interesting insights into the sample of 550 player
 
 Next, let's use some visualiztions to understand the players more thoroughly:
 
-<img class="img-fluid" src="../img/ATP/player_height.png" width="50%" height="50%">
-<img class="img-fluid" src="../img/ATP/player_weight.png" width="50%" height="50%">
+<img class="img-fluid" src="../img/ATP/height_weight_title.png" width="50%" height="50%">
 <img class="img-fluid" src="../img/ATP/player_handedness.png" width="50%" height="50%">
 <img class="img-fluid" src="../img/ATP/player_backhand.png" width="50%" height="50%">
 
