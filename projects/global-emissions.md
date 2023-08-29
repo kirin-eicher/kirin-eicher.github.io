@@ -47,7 +47,9 @@ First, a preliminary look at the distribution of all the variables in the datase
 
 Comparing the mean and median values for each suggests that _emit_, _gdpcap_, _renew1_, and _popdense_ are all heavily right skewed due to very large outlier values (e.g. Singapore's population density is more than 4 times greater than that of the next densest country). The variables _consumption_, _investment_, and _govspend_ are also right skewed but to a lesser degree. Boxplots of the variables will help to confirm this skewness.
 
-<img class="img-fluid" src="../img/global-emissions/initial_boxplots.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/initial_boxplots1.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/initial_boxplots2.png" width="80%">
+
 
 The boxplots show that all the variables mentioned above are right-skewed to varying degrees. Logarithmic or square root transformations may help to reduce the influence of outlier values.
 
