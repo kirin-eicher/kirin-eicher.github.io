@@ -45,3 +45,23 @@ First, a preliminary look at the distribution of all the variables in the datase
 
 <img class="img-fluid" src="../img/global-emissions/summary_stats.png" width="80%">
 
+Comparing the mean and median values for each suggests that _emit_, _gdpcap_, _renew1_, and _popdense_ are all heavily right skewed due to very large outlier values (e.g. Singapore's population density is more than 4 times greater than that of the next densest country). The variables _consumption_, _investment_, and _govspend_ are also right skewed but to a lesser degree. Boxplots of the variables will help to confirm this skewness.
+
+<img class="img-fluid" src="../img/global-emissions/initial_boxplots.png" width="80%">
+
+The boxplots show that all the variables mentioned above are right-skewed to varying degrees. Logarithmic or square root transformations may help to reduce the influence of outlier values.
+
+A scatterplot matrix allows us to spot any clear patterns in the relationships between the variables:
+
+<img class="img-fluid" src="../img/global-emissions/scatterplot_matrix.png" width="80%">
+
+GDP per capita appears to have a positive linear relationship with emissions but nonconstant variance, while the relationships between C02 and both renewable energy usage and consumption are negative. For the other variables, the scatter plots indicate no clear pattern with emissions, although large outliers and the tightly clustered distribution of the rest of the data make this assessment difficult. Selection of the final model should thus consider variable transformation and variable selection.
+
+To be certain, let's first analyze the untransformed model with all variables indcluded as predictors:
+
+<img class="img-fluid" src="../img/global-emissions/first_model.png" width="80%">
+
+The standardized residual plots suggest that the necessary assumptions of non-constant variance and linearity are violated. Variable transformations and selection will both be necessary to create an effective model.
+
+To decide the appropriate transformation for each variable, I use the Box-Cox method, with _emit_ being transformed last using an inverse-repsonse plot. To simplify the interpretation of the model, I stick to log and sqaure root transformations, which luckily seem to provide a decent fit of the model with very high explanatory power ($R^2 = 0.832$). The full transformed model is 
+$$ 
