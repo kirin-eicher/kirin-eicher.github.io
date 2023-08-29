@@ -13,7 +13,8 @@ labels:
   - Carbon emissions
 summary: "Using World Bank data to explore the relationship between CO2 emission and nation-level economic characteristics."
 ---
-The full annotated code for this project can be found [here]().
+The full annotated code for this project can be found [here](https://github.com/kirin-eicher/kirin-eicher.github.io/blob/main/code/Final%20Project%20Coding.txt).
+
 All code was last run on R 4.3.1
 
 # TLDR

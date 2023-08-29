@@ -1,6 +1,8 @@
-#Coding for final project
+#Coding for global emissions project
 ## --> the script can be copy and pasted into an R terminal to perform the
 ## full analysis
+
+# required packages are "car","MASS","leaps"
 
 # CHANGE DIRECTORY BEFORE RUNNING! #
 
