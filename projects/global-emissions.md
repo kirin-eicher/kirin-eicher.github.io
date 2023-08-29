@@ -66,7 +66,10 @@ To be certain, let's first analyze the untransformed model with all variables in
 The standardized residual plots suggest that the necessary assumptions of non-constant variance and linearity are violated. Variable transformations and selection will both be necessary to create an effective model.
 
 To decide the appropriate transformation for each variable, I use the Box-Cox method, with _emit_ being transformed last using an inverse-repsonse plot. To simplify the interpretation of the model, I stick to log and sqaure root transformations, which luckily seem to provide a decent fit of the model with very high explanatory power ($R^2 = 0.832$). The full transformed model is 
-$$\hat{log(emit_{i})} = -7.22 + 0.89log(gdp_{i}) - 0.09renew1_{i}^{1/2} - 0.08log(popdense_{i}) - 0.004consumption_{i}^{1/2} + 0.19log(investment_{i}) + 0.2log(govspend_{i})$$ Other transformations offer slightly higher $R^2$ values, but this model will be significantly easier to interpret. See the code for a more thorough analysis.
+
+$$\hat{log(emit_{i})} = -7.22 + 0.89log(gdp_{i}) - 0.09renew1_{i}^{1/2} - 0.08log(popdense_{i}) - 0.004consumption_{i}^{1/2} + 0.19log(investment_{i}) + 0.2log(govspend_{i})$$ 
+
+Other transformations offer slightly higher $R^2$ values, but this model will be significantly easier to interpret. See the code for a more thorough analysis.
 
 <img class="img-fluid" src="../img/global-emissions/second_model.png" width="60%" height="60%">
 
@@ -79,7 +82,9 @@ Proceeding with this model, variable selection can help to improve the fit. Only
 
 We can also use Bayesian and Akaike information criterion to determine the optimal subset of predictors for the model. The tabel above shows the AIC, corrected AIC, and BIC for models using different subsets of the 6 predictors. The BIC recommends a three-variable model, while the AIC and AICc suggest four-variable models with only marginally lower criteria than values for the three-variable. Considering the AIC penalty for including more variables is smaller than the BIC, the three variable model is chosen to avoid overfitting the data.
 
-The final model becomes $$\hat{log(emit_{i})} = -6.206 + 0.903log(gdp_i) - 0.095renew1_i^{1/2} - 0.1log(popdense_i)$$
+The final model becomes 
+
+$$\hat{log(emit_{i})} = -6.206 + 0.903log(gdp_i) - 0.095renew1_i^{1/2} - 0.1log(popdense_i)$$
 
 <img class="img-fluid" src="../img/global-emissions/final_model.png" width="60%" height="60%">
 <img class="img-fluid" src="../img/global-emissions/final_mmps.png" width="60%" height="60%">
