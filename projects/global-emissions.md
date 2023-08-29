@@ -75,7 +75,7 @@ The transformations have removed much of the pattern from the standardized resid
 Proceeding with this model, variable selection can help to improve the fit. Only the intercept and the OLS coefficients on the first three variables are significant at the 5% level. The added variable plots below show that the transformed _consumption_, _investment_, and _govspend_ variables are not useful predictors (i.e. they are individually not strongly correlated with emissions, holding other predictors constant).
 
 <img class="img-fluid" src="../img/global-emissions/out2_AVplots.png" width="60%" height="60%">
-<img class="img-fluid" src="../img/global-emissions/AIC_BIC.png" width="60%" height="60%">
+<img class="img-fluid" src="../img/global-emissions/AIC_BIC.png" width="60%" height="40%">
 
 We can also use Bayesian and Akaike information criterion to determine the optimal subset of predictors for the model. The tabel above shows the AIC, corrected AIC, and BIC for models using different subsets of the 6 predictors. The BIC recommends a three-variable model, while the AIC and AICc suggest four-variable models with only marginally lower criteria than values for the three-variable. Considering the AIC penalty for including more variables is smaller than the BIC, the three variable model is chosen to avoid overfitting the data.
 
