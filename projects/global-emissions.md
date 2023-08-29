@@ -43,47 +43,46 @@ In total, there are seven variables, all continuous, which are of interest in th
 
 First, a preliminary look at the distribution of all the variables in the dataset.
 
-<img class="img-fluid" src="../img/global-emissions/summary_stats.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/summary_stats.png" width="60%" height="70%">
 
 Comparing the mean and median values for each suggests that _emit_, _gdpcap_, _renew1_, and _popdense_ are all heavily right skewed due to very large outlier values (e.g. Singapore's population density is more than 4 times greater than that of the next densest country). The variables _consumption_, _investment_, and _govspend_ are also right skewed but to a lesser degree. Boxplots of the variables will help to confirm this skewness.
 
-<img class="img-fluid" src="../img/global-emissions/initial_boxplots1.png" width="80%">
-<img class="img-fluid" src="../img/global-emissions/initial_boxplots2.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/initial_boxplots1.png" width="50%" height="50%">
+<img class="img-fluid" src="../img/global-emissions/initial_boxplots2.png" width="50%" height="50%">
 
 
 The boxplots show that all the variables mentioned above are right-skewed to varying degrees. Logarithmic or square root transformations may help to reduce the influence of outlier values.
 
 A scatterplot matrix allows us to spot any clear patterns in the relationships between the variables:
 
-<img class="img-fluid" src="../img/global-emissions/scatterplot_matrix.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/scatterplot_matrix.png" width="60%" height="60%">
 
 GDP per capita appears to have a positive linear relationship with emissions but nonconstant variance, while the relationships between C02 and both renewable energy usage and consumption are negative. For the other variables, the scatter plots indicate no clear pattern with emissions, although large outliers and the tightly clustered distribution of the rest of the data make this assessment difficult. Selection of the final model should thus consider variable transformation and variable selection.
 
 To be certain, let's first analyze the untransformed model with all variables indcluded as predictors:
 
-<img class="img-fluid" src="../img/global-emissions/first_model.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/first_model.png" width="60%" height="60%">
 
 The standardized residual plots suggest that the necessary assumptions of non-constant variance and linearity are violated. Variable transformations and selection will both be necessary to create an effective model.
 
 To decide the appropriate transformation for each variable, I use the Box-Cox method, with _emit_ being transformed last using an inverse-repsonse plot. To simplify the interpretation of the model, I stick to log and sqaure root transformations, which luckily seem to provide a decent fit of the model with very high explanatory power ($R^2 = 0.832$). The full transformed model is 
 $$\hat{log(emit_{i})} = -7.22 + 0.89log(gdp_{i}) - 0.09renew1_{i}^{1/2} - 0.08log(popdense_{i}) - 0.004consumption_{i}^{1/2} + 0.19log(investment_{i}) + 0.2log(govspend_{i})$$ Other transformations offer slightly higher $R^2$ values, but this model will be significantly easier to interpret. See the code for a more thorough analysis.
 
-<img class="img-fluid" src="../img/global-emissions/second_model.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/second_model.png" width="60%" height="60%">
 
 The transformations have removed much of the pattern from the standardized residual plot, although linearity assumption may still be broken (pattern in first graph).
 
 Proceeding with this model, variable selection can help to improve the fit. Only the intercept and the OLS coefficients on the first three variables are significant at the 5% level. The added variable plots below show that the transformed _consumption_, _investment_, and _govspend_ variables are not useful predictors (i.e. they are individually not strongly correlated with emissions, holding other predictors constant).
 
-<img class="img-fluid" src="../img/global-emissions/out2_AVplots.png" width="80%">
-<img class="img-fluid" src="../img/global-emissions/AIC_BIC.png" width="80%">
+<img class="img-fluid" src="../img/global-emissions/out2_AVplots.png" width="60%" height="60%">
+<img class="img-fluid" src="../img/global-emissions/AIC_BIC.png" width="60%" height="60%">
 
 We can also use Bayesian and Akaike information criterion to determine the optimal subset of predictors for the model. The tabel above shows the AIC, corrected AIC, and BIC for models using different subsets of the 6 predictors. The BIC recommends a three-variable model, while the AIC and AICc suggest four-variable models with only marginally lower criteria than values for the three-variable. Considering the AIC penalty for including more variables is smaller than the BIC, the three variable model is chosen to avoid overfitting the data.
 
 The final model becomes $$\hat{log(emit_{i})} = -6.206 + 0.903log(gdp_i) - 0.095renew1_i^{1/2} - 0.1log(popdense_i)$$
 
-<img class="img-fluid" src="../img/global-emissions/final_model.png" width="80%">
-<img class="img-fluid" src="../img/global-emissions/final_mmps.png" width="80%">
-
+<img class="img-fluid" src="../img/global-emissions/final_model.png" width="60%" height="60%">
+<img class="img-fluid" src="../img/global-emissions/final_mmps.png" width="60%" height="60%">
 
 The diagnositc plots are similar to the previous set, suggesting the removed variables were indeed superfluous. The marginal model plots above further confirm that the transformations were a good choice to address the skewed distribution of the predictors. Overall, this model seems valid for prediction!
 
