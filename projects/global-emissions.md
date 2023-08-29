@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: 
+image: img/global-emissions/emit_invResPlot.png
 title: "Predicting national emissions using economic activity"
 date: 07-2023
 published: true
