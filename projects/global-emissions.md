@@ -15,6 +15,8 @@ summary: "Using World Bank data to explore the relationship between CO2 emission
 ---
 The full annotated code for this project can be found [here](https://github.com/kirin-eicher/kirin-eicher.github.io/blob/main/code/Final%20Project%20Coding.txt).
 
+The final cleaned dataset used for this project can be found [here](https://github.com/kirin-eicher/kirin-eicher.github.io/tree/main/datasets).
+
 All code was last run on R 4.3.1
 
 # TLDR
