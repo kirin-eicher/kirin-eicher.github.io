@@ -1,0 +1,264 @@
+#Coding for global emissions project
+## --> the script can be copy and pasted into an R terminal to perform the
+## full analysis
+
+# required packages are "car","MASS","leaps"
+
+# CHANGE DIRECTORY BEFORE RUNNING! #
+
+a=read.csv("WorldBankFinal.csv")
+names(a)
+dim(a)
+
+attach(a)
+
+#Preliminary univariate analysis
+
+summary(emit)
+summary(gdpcap)
+summary(renewable)
+summary(popdense)
+summary(consumption)
+summary(investment)
+summary(govspend)
+
+#add a small (.001) number to renewable to remove zero entries
+renew1=renewable+0.001
+summary(renew1)
+
+#small median compared to mean for emit, gdpcap, renewable, and popdense
+#suggesting the need for log transformation to reduce effect of outliers
+
+#there are fewer large outliers for consumption, investment, and govspend
+#so log transformation could be helpful but maybe not essential
+
+par(mfrow=c(2,2))
+boxplot(emit, main="C02 Emissions", ylab="mt per capita")
+boxplot(gdpcap, main="GDP per Capita", ylab="2015 USD")
+boxplot(renew1, main="Renewable Electricity Output", ylab="%of total output")
+boxplot(popdense, main="Population Density", ylab="Persons per sqare km land")
+#largest outlier is Singapore - 7806.773
+#all four are heavily right-skewed, suggesting a log transformation is needed
+
+boxplot(consumption, main="Household Consumption", ylab="% of GDP")
+# outlier is Somalia - 136.5733
+
+boxplot(investment, main="Fixed Investment", ylab="% of GDP")
+# outlier is Republic of Congo - 80.67549
+
+boxplot(govspend, main="Government Expenditure", ylab="%of GDP")
+#except for outliers, variables do not have severe skew
+
+#spread analysis
+sd(emit)
+sd(gdpcap)
+sd(renew1)
+sd(popdense)
+sd(consumption)
+sd(investment)
+sd(govspend)
+
+#Scatterplot analysis
+
+pairs(emit~gdpcap+renew1+popdense+consumption+investment+govspend)
+
+plot(gdpcap,emit,main="GDP per capita vs C02 emissions per capita",ylab="mt per cap",xlab="2015 USD")
+#nonconstant variance, maybe polynomial relationship
+plot(renew1,emit,main="%Renewable electricity vs C02 emissions per capita",ylab="mt per cap",xlab="% of total output") 
+#maybe inverse #relationship -> 1/renew1
+plot(popdense,emit,main="Population density vs C02 emissions per capita",ylab="mt per cap",xlab="people per square km") 
+#huge outlier makes it difficult to see pattern, but possibly negtaive
+#or no clear pattern
+plot(consumption,emit,main="Household consumption vs C02 emissions per capita", ylab="mt per cap",xlab="% of GDP") 
+#maybe an inverse of negative linear relationship
+plot(investment,emit,main="Gross fixed capital formation vs C02 emissions per capita",ylab="mt per cap",xlab="% of GDP")
+#no clear pattern	
+plot(govspend,emit,main="Final government expenditures vs C02 emissions per capita,ylab="mt per cap",xlab="% of GDP") 
+#maybe positive linear if you remove outliers for govspend
+
+#multicollinearity analysis
+
+x=cbind(gdpcap,renew1,popdense,consumption,investment,govspend)
+cor(x)
+#no perfect multicollinearity
+#largest correlation is between gdpcap and consumption (-0.502), so
+#correlation will reduce significance of estimates somewhate
+
+out1=lm(emit~gdpcap+renew1+popdense+consumption+investment+govspend)
+summary(out1)
+
+par(mfrow=c(2,2))
+plot(out1) #linearity, constant variance, and normality all violated
+
+#transformations
+
+library(car)
+powerTransform(cbind(gdpcap,renew1,popdense,consumption,investment,govspend))
+
+#use transformations of x's recommended by powerTransform
+loggdp=log(gdpcap)
+sqrtrenew=sqrt(renew1)
+logdense=log(popdense)
+sqrtconsumption=sqrt(consumption)
+loginvestment=log(investment)
+loggovspend=log(govspend)
+
+outt=lm(emit~loggdp+sqrtrenew+logdense+sqrtconsumption+loginvestment+loggovspend)
+invResPlot(outt,main="Inverse response plot",xlab="emit",ylab="yhat") 
+#could do 4th root, but try log for ease of interpretation
+logemit=log(emit)
+out2=lm(logemit~loggdp+sqrtrenew+logdense+sqrtconsumption+loginvestment+loggovspend)
+summary(out2)
+#try sqrt of emit
+sqrtemit=sqrt(emit)
+out2sq=lm(sqrtemit~loggdp+sqrtrenew+logdense+sqrtconsumption+loginvestment+loggovspend)
+summary(out2sq)
+
+library(MASS)
+boxcox(out1,lambda=seq(0,0.5,0.1)) #suggests taking cube root of emit
+
+emit3=emit^(1/3)
+out3=lm(emit3~gdpcap+renew1+popdense+consumption+investment+govspend)
+summary(out3)
+#transform some of the x's
+out3t=lm(emit3~loggdp+sqrtrenew+logdense+sqrtconsumption+loginvestment+loggovspend)
+summary(out3t)
+
+#full log transformation
+logrenew=log(renew1)
+logconsumption=log(consumption)
+outloglog=lm(logemit~loggdp+logrenew+logdense+logconsumption+loginvestment+loggovspend)
+summary(outloglog)
+
+#model comparison and selection
+summary(out1)
+summary(out2)
+summary(out2sq)
+summary(out3)
+summary(out3t)
+summary(outloglog)
+#out3t gives the best values, but its interpretation is messy
+#outloglog and out2sq are not much worse in terms of explanatory power
+#but they are easier to interpret, so diagnose these first
+
+par(mfrow=c(2,2))
+plot(out2,main="Diagnostic plots") 
+#pretty good, maybe violates linearity
+plot(outloglog,main="Diagnostic plots for log-log model") 
+#also ok, but a stronger violation of linearity
+#likely because of quadratic pattern in renew1
+
+#consider out2 first
+#patterns to residuals
+plot(fitted(out2),rstandard(out2),main="Standardized residuals",ylab="Standardized residuals",xlab="Fitted values")
+#ok but not perfect, probably good enough for analysis
+
+#leverage points
+plot(hatvalues(out2),main="Leverage points",ylab="Leverage",xlab="Fitted values");abline(h=4/159) #significant leverage for 
+#case 82: Kiribati, case 26: Burudni, case 134: Somalia
+
+#outliers
+plot(fitted(out2),rstandard(out2),main="Outliers",ylab="Standardized residuals",xlab="Fitted values");abline(h=3);abline(h=-3)
+#no notable outliers by this standard
+
+#added variable plots
+library(car)
+avPlots(out2,main="Added variable plots") 
+#indicates sqrtconsumption, loginvestment, loggovspend are all not #useful to the regression, consider dropping
+
+#marginal model plots
+library(car)
+mmps(out2,main="Marginal model plots") #transformations seem to be alright
+
+#variable selection
+x=cbind(loggdp,sqrtrenew,logdense,sqrtconsumption,loginvestment,loggovspend)
+library(leaps)
+submatx=regsubsets(as.matrix(x),logemit)
+rs=summary(submatx)
+rs$adjr2 #ajdr2 doesn't improve much after the 2 model
+
+#create optimal subset models to get AIC and BIC calculations
+om1=lm(logemit~loggdp)
+om2=lm(logemit~loggdp+sqrtrenew)
+om3=lm(logemit~loggdp+sqrtrenew+logdense)
+om4=lm(logemit~loggdp+sqrtrenew+logdense+loggovspend)
+om5=lm(logemit~loggdp+sqrtrenew+logdense+loggovspend+loginvestment)
+om6=lm(logemit~loggdp+sqrtrenew+logdense+loggovspend+loginvestment+sqrtconsumption)
+
+extractAIC(om1,k=2)
+extractAIC(om2,k=2)
+extractAIC(om3,k=2)
+extractAIC(om4,k=2)
+extractAIC(om5,k=2)
+extractAIC(om6,k=2)
+#lowest for om4, but not a huge difference between om3 and om4
+
+#AICc
+n <- length(om1$residuals) #equal to the number of data points
+npar <- length(om1$coefficients) +1 #npar will give number of betas
+extractAIC(om1,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+npar <- length(om2$coefficients) +1
+extractAIC(om2,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+npar <- length(om3$coefficients) +1
+extractAIC(om3,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+npar <- length(om4$coefficients) +1
+extractAIC(om4,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+npar <- length(om5$coefficients) +1
+extractAIC(om5,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+npar <- length(om6$coefficients) +1
+extractAIC(om6,k=2)+2*npar*(npar+1)/(n-npar-1)
+
+#Suggests AIC increases from om4 to om5, so agress with uncorrected AIC
+
+#BIC
+extractAIC(om1,k=log(n))
+extractAIC(om2,k=log(n))
+extractAIC(om3,k=log(n))
+extractAIC(om4,k=log(n))
+extractAIC(om5,k=log(n))
+extractAIC(om6,k=log(n))
+#also suggests om3
+
+#step-wise backward elimination
+backAIC=step(out2,direction="backward") #recommends om4
+backBIC=step(out2,direction="backward",k=log(n)) #recommends om3
+
+#forward selection
+empty=lm(logemit~1)
+forwardAIC=step(empty,scope=list(lower=~1,
+upper=~loggdp+sqrtrenew+logdense+loggovspend+loginvestment+sqrtconsumption,direction="forward",k=2)) #recommends om4
+forwardBIC=step(empty,scope=list(lower=~1,
+upper=~loggdp+sqrtrenew+logdense+loggovspend+loginvestment+sqrtconsumption,direction="forward",k=log(n))) #recommends om4
+#but not a significant improvement over om3
+
+#all of this suggest optimal would be om3, using loggdp, sqrtrenew, and 
+#logdense
+
+anova(out2,om3) #p-value too high, cannot reject null that the 
+#coefficients on sqrtconsumption, loginvestment and loggovspending are
+#not zero
+
+#final model
+
+outfinal=lm(logemit~loggdp+sqrtrenew+logdense)
+summary(outfinal)
+par(mfrow=c(2,2))
+plot(outfinal,main="Diagnostic plots for final model") 
+#still pretty good
+
+avPlots(outfinal,main="Added variable plots for final model") 
+#no clear suggestion to drop any variable
+mmps(outfinal,main="Marginal model plots for final model")
+
+#multicollinearity check
+vif(outfinal) #all values <5, so no issues
+
+par(mfrow=c(1,1))
+library(car)
+plot(fitted(outfinal),hatvalues(outfinal),main="Leverage points",ylab="Leverage",xlab="Fitted values")
+plot(fitted(outfinal),rstandard(outfinal),main="Standardized residuals",ylab="Standardized residuals",xlab="Fitted values")
