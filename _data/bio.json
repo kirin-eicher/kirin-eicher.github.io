@@ -1,18 +1,18 @@
 {
 	"basics": {
 		"name": "Kirin Eicher",
-		"label": "Student at Haverford College",
+		"label": "Analyst at NERA Economic Consulting",
 		"picture": "https://github.com/kirin-eicher.png",
 		"email": "eicherk20@gmail.com",
 		"phone": "301-412-6474",
 		"website": "https://kirin-eicher.github.io",
-		"summary": "I am a senior in the Haverford College Economics department. Expecting to graduate with a B.A. in economics and minor in statistics Spring 2024. Aspiring data analyst/scientist with an eye towards policy analysis, health, and sports.",
+		"summary": "I am an Analyst at NERA in the Antitrust practice. I have experience using data analysis and econometrics to study competition. In addition to Antitrust economics, I'm also interested in statistics, data science, and sports analytics.",
 		"location": {
 			"address": "",
-			"postalCode": "22932",
-			"city": "Crozet",
+			"postalCode": "",
+			"city": "Washington",
 			"countryCode": "USA",
-			"region": "Virginia"
+			"region": "DC"
 		},
 		"profiles": [{
 				"network": "github",
@@ -27,36 +27,47 @@
 		]
 	},
 	"interests": [{
-			"name": "Data Analytics"
+			"name": "Statistics"
 		},
 		{
-			"name": "Business Analytics"
+			"name": "Antitrust economics"
 		},
 		{
-			"name": "Policy Research"
+			"name": "Data science"
 		},
 		{
-			"name": "Data management"
+			"name": "Sports analytics"
 		}
 	],
 	"skills": [{
 			"name": "Software and Coding Languages",
-			"keywords": ["Python", "R", "SQL", "Excel", "Tableau", "Stata", "Git"]
+			"keywords": ["R", "Python", "SQL", "Excel", "Stata", "Git"]
 		},
 		{
 			"name": "Skills",
-			"keywords": ["Data analysis", "Statistical modeling", "Causal inference", "Data creation", "Written and oral communication"]
+			"keywords": ["Data analysis", "Statistical modeling", "Project managment"]
 		}
 	],
 	"education": [{
 		"institution": "Haverford College, Haverford, PA",
-		"area": "Economics (expected Spring 2024)",
+		"area": "Economics",
 		"studyType": "B.A.",
 		"startDate": "2020-08-30",
-		"endDate": "Present",
+		"endDate": "2024-05-18",
 		"courses": ["Applied Multivariate Statistical Analysis", "Advanced Econometrics", "Probability", "Linear Algebra"]
 	}],
-	"work": [{
+	"work": [
+		{
+			"company": "NERA Economic Consulting",
+			"position": "Analyst",
+			"startDate": "2024-07-12",
+			"endDate": "Present",
+			"summary": "Working as an analyst and researcher in the Antitrust practice, focusing broadly on matters related to market competition and consumer welfare.",
+			"highlights": [
+				"Directing efforts of junior research team to support senior economists' projects.", "Preparing statistical models to develop economic analyses.", "Applying economic reasoning to diverse client data, preparing damages models, market shares, and large data submissions to the FTC and DOJ.", "Conducted firm-wide training on using the R programming language for economic research."
+			]
+		}
+		{
 			"company": "Haverford College",
 			"position": "Economics Research Assistant",
 			"startDate": "2023-05-24",
@@ -81,9 +92,9 @@
 	"volunteer": [{
 		"organization": "Haverford Varsity Men's Tennis",
 		"position": "Captain",
-		"startDate": "10-15-2022",
-		"endDate": "Present",
-		"summary": "I assist our coaches by helping to facilitate the effective operation of our team",
+		"startDate": "2022-10-15",
+		"endDate": "2024-05-18",
+		"summary": "I assisted our coaches by helping to facilitate the effective operation of our team",
 		"highlights": [
 			"Meet regularly with players and coaches to establish agreement on academic and athletic goals and direction.", "Consult with coaches on team events and standards for behavior and success.", "Coordinate and lead extracurricular events such as volunteering, attendance at student-athlete panels, and leadership training."
 		]
